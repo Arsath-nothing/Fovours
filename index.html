@@ -195,7 +195,7 @@ $("#nav").innerHTML=NAV.map(([k,l])=>`<a href="#${k}" data-k="${k}">${l}</a>`).j
 const cta=(t,h,c="p")=>`<a class="btn ${c}" href="${h}">${t}</a>`;
 const head=(e,t,l)=>`<div class="ph-head wrap"><span class="eye">${e}</span><h1 style="font-size:clamp(30px,5vw,48px)">${t}</h1><p class="lead">${l}</p></div>`;
 const svc=(s,i)=>`<div class="card rv"><div class="num">${i+1}</div><h3>${s[0]}</h3><p>${s[1]}</p><ul class="ck">${s[2].map(x=>`<li>${x}</li>`).join("")}</ul></div>`;
-const enrolBtn=p=>`<button class="btn g" data-enrol="${p.id}">Enrol in ${p.name}</button>`;
+const enrolBtn=p=>p.id==="eduleague"&&SITE.eduleagueForm?`<a class="btn g" href="${SITE.eduleagueForm}" target="_blank" rel="noopener">Open enrollment form</a>`:`<button class="btn g" data-enrol="${p.id}">Enrol in ${p.name}</button>`;
 
 const V={
 home:()=>`<div class="wrap hero"><div><span class="eye">AI Automation · Intelligent Systems · Digital Transformation</span>
@@ -223,9 +223,6 @@ programs:()=>head("Programs & Updates","Learn it. Build it. Launch it.","Program
 <h2 style="margin-top:56px">Updates</h2><div class="tl">${UPDATES.map(u=>`<div><span class="tag">${u.date}</span><h3>${u.title}</h3><p style="color:var(--muted);margin:.2em 0">${u.body}</p></div>`).join("")}</div></div></section>`,
 
 careers:()=>head("Careers","Build the intelligent future with us.","We are always looking for curious builders who like solving real problems.")+`<section style="padding-top:24px"><div class="wrap"><div class="grid">${PERKS.map((p,i)=>`<div class="card rv"><div class="num">${i+1}</div><h3>${p[0]}</h3><p>${p[1]}</p></div>`).join("")}</div>
-<div class="card" style="margin-top:28px"><span class="tag">EduLeague</span><h3>Aurora 0.2 Enrollment</h3><p>Ready to join Fovorse Learnings? Enroll in EduLeague and start building real AI projects with live mentor support.</p>
-${SITE.eduleagueForm?`<div class="ctas"><a class="btn p" href="${SITE.eduleagueForm}" target="_blank" rel="noopener">Open enrollment form</a></div>${SITE.eduleagueForm.includes("docs.google.com/forms")?`<div class="google-form-wrap" style="margin-top:16px"><iframe src="${SITE.eduleagueForm}" title="EduLeague enrollment form" loading="lazy" allowfullscreen></iframe></div>`:""}`:`<div class="ctas"><a class="btn p" href="#contact">Request EduLeague form link</a></div>`}
-</div>
 <h2 style="margin-top:48px">Open roles</h2>${ROLES.length?`<div class="grid">${ROLES.map(r=>`<div class="card"><span class="tag">${r.type}</span><h3>${r.title}</h3><p>${r.where}</p><p>${r.desc}</p><button class="btn p" data-apply="${r.title}">Apply</button></div>`).join("")}</div>`:`<div class="card" style="margin-top:20px"><h3>No openings listed right now</h3><p>Send us an open application with a short note and your work. We read every one.</p><button class="btn p" data-apply="Open application">Send open application</button></div>`}</div></section>`,
 
 projects:()=>head("Projects","Things we have built.","Real products from Fovorse. More coming soon.")+`<section style="padding-top:24px"><div class="wrap"><div class="grid">${PROJECTS.map(p=>`<div class="card rv"><span class="tag">${p.cat}</span><h3 style="font-size:28px">${p.title}</h3><p>${p.desc}</p></div>`).join("")}<div class="card rv" style="border-style:dashed"><h3>More on the way</h3><p>New projects will appear here as they ship.</p></div></div></div></section>`,
